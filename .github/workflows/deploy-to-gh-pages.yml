@@ -18,6 +18,14 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          VUE_APP_API_KEY: ${{ env.VUE_APP_API_KEY }}
+          VUE_APP_FIREBASE_API_KEY: ${{ env.VUE_APP_FIREBASE_API_KEY }}
+          VUE_APP_FIREBASE_APP_ID: ${{ env.VUE_APP_FIREBASE_APP_ID }}
+          VUE_APP_FIREBASE_MEASUREMENT_ID: ${{ env.VUE_APP_FIREBASE_MEASUREMENT_ID }}
+          VUE_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID }}
+          VUE_APP_FIREBASE_PROJECT_ID: ${{ env.VUE_APP_FIREBASE_PROJECT_ID }}
         run: |
           cd dist
           git init
@@ -25,11 +33,5 @@ jobs:
           git commit -m 'deploy'
           git push -f git@github.com:Samuel-Spielmann/Samuel-Spielmann.github.io.git master
         with:
-          VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
-          VUE_APP_FIREBASE_API_KEY: ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
-          VUE_APP_FIREBASE_APP_ID: ${{ secrets.VUE_APP_FIREBASE_APP_ID }}
-          VUE_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.VUE_APP_FIREBASE_MEASUREMENT_ID }}
-          VUE_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VUE_APP_FIREBASE_MESSAGING_SENDER_ID }}
-          VUE_APP_FIREBASE_PROJECT_ID: ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
           BRANCH: gh-pages
           FOLDER: dist
