@@ -32,6 +32,3 @@ jobs:
           git add -A
           git commit -m 'deploy'
           git push -f git@github.com:Samuel-Spielmann/Samuel-Spielmann.github.io.git master
-        with:
-          BRANCH: gh-pages
-          FOLDER: dist
