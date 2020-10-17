@@ -29,6 +29,9 @@ jobs:
       - name: Deploy 🚀
         run: |
           cd dist
+
+          git config --global user.email "samuelgspielmann+github@gmail.com"
+          git config --global user.name "SamuelSpielmann"
           git init
           git add -A
           git commit -m 'deploy'
