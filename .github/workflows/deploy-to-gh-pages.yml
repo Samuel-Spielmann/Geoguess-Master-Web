@@ -18,7 +18,12 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
-        uses: Samuel-Spielmann/Geoguess-Master-Web@3.6.2
+        run: |
+          cd dist
+          git init
+          git add -A
+          git commit -m 'deploy'
+          git push -f git@github.com:Samuel-Spielmann/Samuel-Spielmann.github.io.git master
         with:
           VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
           VUE_APP_FIREBASE_API_KEY: ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
@@ -28,3 +33,15 @@ jobs:
           VUE_APP_FIREBASE_PROJECT_ID: ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
           BRANCH: gh-pages
           FOLDER: dist
+
+cd dist
+
+# if you are deploying to a custom domain
+# echo 'www.example.com' > CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# if you are deploying to https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
